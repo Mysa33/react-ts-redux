@@ -1,5 +1,9 @@
 import * as React from 'react';
+import { connect } from "react-redux";
+import { startAction } from "./actions/startAction";
+import { stopAction } from "./actions/stopAction";
 import './App.scss';
+import ProductsContent from "./components/products/productsContent";
 
 import logo from './logo.svg';
 
@@ -14,9 +18,17 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <ProductsContent></ProductsContent>
       </div>
+      
     );
   }
 }
-
-export default App;
+const mapStateToProps = (state:any) => ({
+  ...state
+});
+const mapDispatchToProps = (dispatch:any) => ({
+  startAction: () => dispatch(startAction),
+  stopAction: () => dispatch(stopAction)
+});
+export default connect(mapStateToProps, mapDispatchToProps) (App);

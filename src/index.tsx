@@ -1,79 +1,83 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import App from './App';
 import './index.scss';
 import * as serviceWorker from './registerServiceWorker';
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import App from './App';
+import configureStore from "./store";
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { Provider } from "react-redux";
 
 export const routing = (
+  
+  <Provider store = {configureStore()}>
+    <Router>
 
-  <Router>
+      <div className="container-fluid">
 
-    <div className="container-fluid">
+        <div className="header-container fixed-top">
 
-      <div className="header-container fixed-top">
+          <div className="container">
 
-        <div className="container">
+            <header>
 
-          <header>
+              <nav className="navbar">
 
-            <nav className="navbar">
+                <ul className="navbar-nav mr-auto">
 
-              <ul className="navbar-nav mr-auto">
+                  <li className="nav-item">
 
-                <li className="nav-item">
+                    <Link to="/">
 
-                  <Link to="/">
-
-                  <i className="material-icons">
-
-
-
-                  home
+                    <i className="material-icons">
 
 
+                    home
 
-                  </i>
 
-                  </Link>
 
-                </li>
+                    </i>
 
-                <li className="nav-item">
+                    </Link>
 
-                  <Link to="/">Home</Link>
+                  </li>
 
-                </li>
+                  <li className="nav-item">
 
-                <li className="nav-item">
+                    <Link to="/">Home</Link>
 
-                  <Link to="/cart">Cart</Link>
+                  </li>
 
-                </li>
+                  <li className="nav-item">
 
-              </ul>
+                    <Link to="/cart">Cart</Link>
 
-            </nav>
+                  </li>
 
-          </header>
+                </ul>
+
+              </nav>
+
+            </header>
+
+          </div>
 
         </div>
 
+        <Route exact={true} path="/" component={App} />
+
+        <Route path="/cart" component={App} />
+
       </div>
 
-      <Route exact={true} path="/" component={App} />
-
-      <Route path="/cart" component={App} />
-
-    </div>
-
-  </Router>
-
+    </Router>
+  </Provider>
 )
 
 
 
-ReactDOM.render(routing, document.getElementById('root'));
+ReactDOM.render(
+  routing, 
+  document.getElementById('root'));
 
 
 

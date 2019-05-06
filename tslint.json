@@ -4,8 +4,17 @@
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts",
-      "coverage/lcov-report/*.js"
+      "coverage/lcov-report/*.js",
+      "src/**/**/*.tsx",
+      "src/**/**/*.ts",
+      "src/**/*.tsx",
+      "src/**/*.ts"
+
     ],
-    "member-access": true
+    "rules": {
+      "member-access": true,
+      "origin-ordered-imports": [ false ]
+    }
+
   }
 }
