@@ -1,4 +1,6 @@
 export const startAction = {
-  type: "rotate",
-  payload: true
+  
+  payload: true,
+  type: "rotate"
+  
 };
